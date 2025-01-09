@@ -2,8 +2,7 @@
 
 This is an official implementation for "NGSNet: An NAMLab Hierarchical Image Segmentation Guided Swin Transformer Based Network for RGB-D Salient Object Detection"
 
-![](./ngs_table.png)
-![](./pr_curve.png)
+
 
 ## Environmental Setups
 
@@ -21,8 +20,10 @@ pip install -r requirements.txt
 >## Results
 * **Qualitative comparison**  
 
-![image](figs/vision_results.png)  
-Figure.2 Qualitative comparison of our proposed method with some SOTA methods.  
+![](./ngs_table.png)
+![](./pr_curve.png)
+
+Fig.1 Qualitative comparison of our proposed method with some SOTA methods.  
 
 * **Quantitative comparison** 
 
