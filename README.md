@@ -23,12 +23,17 @@ pip install -r requirements.txt
 ![](./ngs_table.png)
 ![](./pr_curve.png)
 
-Fig.1 Qualitative comparison of our proposed method with some SOTA methods.  
+Fig.1 Qualitative comparison of our proposed method with some RGB-D SOTA methods.  
+
+![](./rgbt_table.png)
+
+Fig.2 Qualitative comparison of our proposed method with some RGB-T SOTA methods.
+
 
 * **Quantitative comparison** 
 
 ![image](figs/qulities_results.png)  
-Table.1 Quantitative comparison with some SOTA models on five public RGB-D benchmark datasets. 
+Table.1 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
 
 * **Salmaps**   
 The salmaps of the above datasets can be download from [here](https://pan.baidu.com/s/1sswZiW-2lDaYPPnpK9Ahbw) [code:NEPU] or [Google](https://drive.google.com/file/d/1cBSijVa52ut-htYnBWDegFiYlMUhZC8W/view?usp=drive_link).
