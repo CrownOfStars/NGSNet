@@ -66,18 +66,16 @@ train on multi-GPUs
 
 ### model and log
 
-log文件夹里面是模型运行的结果，这个文件夹不要动，别的文件丢了都无所谓，这里面的文件都是很重要的数据
-
-每次运行后会创建一个文件夹，里面包含如下几组数据
-
-+ ckpt文件夹:包含了模型文件，一般取best那个pth模型文件
-
-+ src文件夹:本次运行的源文件，这样修改了代码也不用担心之前的代码没存档了(我认为是不错的习惯，因为代码在初期是经常修改的，把代码和模型运行结果对应起来方便还原)
-
-+ save文件夹:在测试集上生成的显著性检测的结果
-
-+ log.txt文件:输出日志，除了输出外，本次运行的config信息可以从里面得知
-
+```
+path/to/log/
+├─fig/
+├─save/#pred maps
+├─src/#src code
+├─eval_result.csv
+├─args.json
+├─config.yaml
+└─ckpt/#checkpoints
+```
 
 test 
 ```
