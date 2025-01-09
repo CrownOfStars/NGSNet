@@ -110,7 +110,7 @@ Table.1 Quantitative comparison with some SOTA models on some public RGB-D bench
 
 ![](./rgbt.png)
 
-Table.2 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
+Table.2 Quantitative comparison with some SOTA models on some public RGB-T benchmark datasets. 
 
 
 
