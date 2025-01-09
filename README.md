@@ -30,6 +30,7 @@ Fig.2 Qualitative comparison of our proposed method with some RGB-T SOTA methods
 
 ![](./main_cmp.png)
 ![](./rgbt.png)
+
 Table.1 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
 
 
