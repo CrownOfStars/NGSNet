@@ -12,9 +12,9 @@ conda activate ngsnet
 pip install -r requirements.txt
 ```
 
->### Train/Test
+### Train/Test
 
->## Data Preparation
+### Data Preparation
 
 We provide [download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-D dataset，[download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-T dataset.
 
@@ -51,7 +51,7 @@ RGBT_train/
 ├─namlab40/ #only for train, optional
 ├─...
 ```
->### pretrain
+### pretrain
 
 ./pretrained contains several backbone pre-trained checkpoint files with their corresponding configuration files
 
@@ -64,7 +64,7 @@ train on multi-GPUs
 #     --train_root /path/to/train/dataset --val_root /path/to/test/dataset
 ```
 
->### model and log
+### model and log
 
 log文件夹里面是模型运行的结果，这个文件夹不要动，别的文件丢了都无所谓，这里面的文件都是很重要的数据
 
@@ -88,11 +88,11 @@ python test.py --test_model /path/to/log/ --gpu_id 0
 
 The salmaps of the above datasets can be download from [here]().
 
->## Evaluation and Visual Analysis
+## Evaluation and Visual Analysis
 
 refer to [SOD_Evaluation_Metrics](https://github.com/zyjwuyan/SOD_Evaluation_Metrics)
 
->## Results
+## Results
 * **Qualitative comparison**  
 
 ![](./ngs_table.png)
