@@ -2,8 +2,6 @@
 
 This is an official implementation for "NGSNet: An NAMLab Hierarchical Image Segmentation Guided Swin Transformer Based Network for RGB-D Salient Object Detection"
 
-
-
 ## Environmental Setups
 
 python>=3.7 pytorch>=1.13
@@ -13,7 +11,6 @@ conda create -n ngsnet python=3.8
 conda activate ngsnet
 pip install -r requirements.txt
 ```
-
 
 >## Evaluation and Visual Analysis
 
@@ -31,8 +28,8 @@ Fig.2 Qualitative comparison of our proposed method with some RGB-T SOTA methods
 
 * **Quantitative comparison** 
 
-![image](./)
-![](./)
+![](./main_cmp.png)
+![](./rgbt.png)
 Table.1 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
 
 
@@ -46,7 +43,7 @@ networks里面是模型的代码
 
 >## Data Preparation
 
-We provide [download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-D dataset，[download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-T dataset
+We provide [download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-D dataset，[download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-T dataset.
 
 We randomly selected images from multiple test datasets for validation.
 
