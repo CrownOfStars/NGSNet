@@ -12,59 +12,6 @@ conda activate ngsnet
 pip install -r requirements.txt
 ```
 
-
-### 项目结构简介
-
-```
-
-
-```
-
->### NAMLab边界提取
-
->#### NAMLAB环境配置
-
-[参考教程](https://waltpeter.github.io/open-cv-basic/install-opencv-ubuntu-cpp/index.html)
-
-```
-
-```
-
-```
-
-```
-
->#### NAMLab分块
-
-cppsrc文件夹包含了NAMLab的C++ 代码，详情见[NAMLab](https://github.com/YunpingZheng/NAMLab)
-
-
-run_dataset,run_demo都已经编译完成
-
-```
-cd /home/data1/ShiqiangShu/WaveNet/cppsrc/NAMLab/NAMLab/'Source Codes'/Linux
-```
-
-只需要在这个目录下执行
-
-```
-run_dataset {输入图片所在文件夹路径，最好用绝对路径} {结果所在的路径，最好也是绝对路径} 0 {分割块的数量}
-```
-
-在结果的文件夹下面找到分割块的.mat文件
-
->### NAMLab分块文件转化为边界图
-
-把.mat文件中每次分割出来的块边界做个提取,拿形态学膨胀的结果减去形态学腐蚀的结果
-
-[参考博客](https://blog.csdn.net/wangjia2575525474/article/details/117919453)
-
-
-```
-#TODO 参数
-python /home/data1/ShiqiangShu/WaveNet/dataset/convertmat.py --/path/to/data --/path/to/result
-```
-
 >### 模型和日志
 
 log文件夹里面是模型运行的结果，这个文件夹不要动，别的文件丢了都无所谓，这里面的文件都是很重要的数据
@@ -100,7 +47,7 @@ The salmaps of the above datasets can be download from [here](https://pan.baidu.
 
 networks里面是模型的代码
 
->### Data Preparation
+>## Data Preparation
 
 We provide [download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-D dataset，[download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-T dataset
 
@@ -136,6 +83,47 @@ RGBT_train/
 ├─RGB/
 ├─namlab40/ #only for train, optional
 ├─...
+```
+
+>### NAMLab边界提取
+
+>#### NAMLAB环境配置
+
+[参考教程](https://waltpeter.github.io/open-cv-basic/install-opencv-ubuntu-cpp/index.html)
+
+```
+
+```
+
+>#### NAMLab boundary data preparation
+
+cppsrc文件夹包含了NAMLab的C++ 代码，详情见[NAMLab](https://github.com/YunpingZheng/NAMLab)
+
+
+run_dataset,run_demo都已经编译完成
+
+```
+cd /home/data1/ShiqiangShu/WaveNet/cppsrc/NAMLab/NAMLab/'Source Codes'/Linux
+```
+
+只需要在这个目录下执行
+
+```
+run_dataset {输入图片所在文件夹路径，最好用绝对路径} {结果所在的路径，最好也是绝对路径} 0 {分割块的数量}
+```
+
+在结果的文件夹下面找到分割块的.mat文件
+
+>### NAMLab分块文件转化为边界图
+
+把.mat文件中每次分割出来的块边界做个提取,拿形态学膨胀的结果减去形态学腐蚀的结果
+
+[参考博客](https://blog.csdn.net/wangjia2575525474/article/details/117919453)
+
+
+```
+#TODO 参数
+python /home/data1/ShiqiangShu/WaveNet/dataset/convertmat.py --/path/to/data --/path/to/result
 ```
 
 >### pretrain
