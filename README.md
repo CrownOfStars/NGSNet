@@ -12,10 +12,6 @@ conda activate ngsnet
 pip install -r requirements.txt
 ```
 
->## Evaluation and Visual Analysis
-
-refer to [SOD_Evaluation_Metrics](https://github.com/zyjwuyan/SOD_Evaluation_Metrics)
-
 >### Train/Test
 
 >## Data Preparation
@@ -92,6 +88,9 @@ python test.py --test_model /path/to/log/ --gpu_id 0
 
 The salmaps of the above datasets can be download from [here]().
 
+>## Evaluation and Visual Analysis
+
+refer to [SOD_Evaluation_Metrics](https://github.com/zyjwuyan/SOD_Evaluation_Metrics)
 
 >## Results
 * **Qualitative comparison**  
@@ -117,19 +116,17 @@ Table.2 Quantitative comparison with some SOTA models on some public RGB-D bench
 
 
 
->### NAMLab boundary guidance mechaism
-
->#### config NAMLAB environment
+### config NAMLAB environment
 
 refer to [opencv-install](https://waltpeter.github.io/open-cv-basic/install-opencv-ubuntu-cpp/index.html)
 
 refer to [matlab-install](https://blog.csdn.net/mziing/article/details/122422397)
 
->#### NAMLab boundary data preparation
+### NAMLab boundary data preparation
 
 refer to [NAMLab](https://github.com/YunpingZheng/NAMLab)
 
->### convert NAMLab Hierarchical Image Segmentation map to NAMLab boundary map
+### convert NAMLab Hierarchical Image Segmentation map to NAMLab boundary map
 
 ```
 python convertmat.py --/path/to/data --/path/to/result
@@ -137,6 +134,6 @@ python convertmat.py --/path/to/data --/path/to/result
 
 # Related works
 - TIP 23 - WaveNet: Wavelet Network With Knowledge Distillation for RGB-T Salient Object Detection [[Code](https://github.com/nowander/WaveNet)]
-- TCSVT 21 - SwinNet: Swin Transformer drives edge-aware RGB-D and RGB-T salient object detection [[Code][(https://github.com/liuzywen/SwinNet)]
-- F3Net - F3Net: Fusion, Feedback and Focus for Salient Object Detection [[Code](https://github.com/weijun-arc/F3Net)]
-
+- TCSVT 21 - SwinNet: Swin Transformer drives edge-aware RGB-D and RGB-T salient object detection [[Code](https://github.com/liuzywen/SwinNet)]
+- AAAI 20 - F3Net - F3Net: Fusion, Feedback and Focus for Salient Object Detection [[Code](https://github.com/weijun-arc/F3Net)]
+- ICCV 17 - Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization [[Code](https://github.com/jacobgil/pytorch-grad-cam)]
