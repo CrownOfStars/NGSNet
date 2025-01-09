@@ -1,62 +1,22 @@
-# Test_NAMSwin
+# NGSNet
+
+This is an official implementation for "NGSNet: An NAMLab Hierarchical Image Segmentation Guided Swin Transformer Based Network for RGB-D Salient Object Detection"
+
+## Environmental Setups
+
+python>=3.7 pytorch>=1.13
+
+```
+conda create -n ngsnet python=3.8
+conda activate ngsnet
+pip install -r requirements.txt
+```
+
 
 ### 项目结构简介
 
 ```
-#TODO 还有一些目录需要完善，目前只列出前两级目录
 
-./WaveNet
-├── cppsrc
-│   └── NAMLab
-├── dataset
-│   ├── bd_process.py
-│   ├── checkpoints
-│   ├── convertmat.py
-│   ├── dataset.py
-│   ├── main.py
-│   ├── RGBD_dataset
-│   ├── ted.py
-│   └── utils
-├── depthcatbound.py
-├── log
-│   ├── 2023-12-10-10:09:57AnyNet-pool-s36
-│   ├── 2023-12-10-10:12:12AnyNet-swin-large
-│   ├── 2023-12-10-14:12:50AnyNet-swin-base
-│   └── ...
-├── loss.py
-├── matlab_eval
-│   ├── datasets
-│   ├── EvaluationCode
-│   ├── result
-│   └── test_maps
-├── meter.py
-├── networks
-│   ├── AnyNet.py
-│   ├── configs
-│   ├── models_config.py
-│   ├── PoolNets.py
-│   ├── PWNet.py
-│   ├── swin_mlp.py
-│   ├── SwinNet
-│   ├── SwinNets.py
-│   ├── swin_transformer_moe.py
-│   ├── swin_transformer.py
-│   ├── swin_transformer_v2.py
-│   ├── wavemlp.py
-│   └── Wavenet.py
-├── pretrained
-│   ├── configs
-│   ├── poolformer_m36.pth
-│   ├── swin_base_patch4_window12_384_22k.pth
-│   ├── WaveMLP_M.pth
-│   ├── ...
-├── README.md
-├── rgbd_dataset.py
-├── rgbdt_dataset.py
-├── run_model.py
-├── test.py
-├── train.py
-└── utils.py
 
 ```
 
@@ -105,49 +65,6 @@ run_dataset {输入图片所在文件夹路径，最好用绝对路径} {结果�
 python /home/data1/ShiqiangShu/WaveNet/dataset/convertmat.py --/path/to/data --/path/to/result
 ```
 
->### pytorch环境配置
-
-```
-conda create -n env_name python=3.7
-conda activate env_name
-pip install -r requirements.txt
-```
-
->### 数据集设置
-
-```
-cd /home/data1/ShiqiangShu/WaveNet/dataset/
-```
-
-这个文件夹主要就是存放数据集和一些数据处理的文件
-
-test,train,val分别存放三类数据集
-
-我们提供了数据集的[百度网盘下载链接](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial)
-
-```
-RGBD_dataset
-├── test
-│   ├── COME-E
-│   ├── COME-H
-│   ├── DES
-│   ├── DUT
-│   ├── LFSD
-│   ├── NJU2K
-│   ├── NLPR
-│   ├── SIP
-│   ├── SSD
-│   └── STERE
-├── train
-│   ├── COME
-│   ├── DUT-RGBD
-│   └── NJUNLPR
-└── val
-    └── NJUNLPR
-```
-
-测试和对比实验主要就是围绕着test里的几个数据集来展开的
-
 >### 模型和日志
 
 log文件夹里面是模型运行的结果，这个文件夹不要动，别的文件丢了都无所谓，这里面的文件都是很重要的数据
@@ -156,84 +73,88 @@ log文件夹里面是模型运行的结果，这个文件夹不要动，别的�
 
 + ckpt文件夹:包含了模型文件，一般取best那个pth模型文件
 
-+ fig文件夹:暂时没啥用，后面可能要做loss随着epoch变化图？
-
 + src文件夹:本次运行的源文件，这样修改了代码也不用担心之前的代码没存档了(我认为是不错的习惯，因为代码在初期是经常修改的，把代码和模型运行结果对应起来方便还原)
 
 + save文件夹:在测试集上生成的显著性检测的结果
 
 + log.txt文件:输出日志，除了输出外，本次运行的config信息可以从里面得知
 
->### 评估与可视化结果
+>## Evaluation and Visual Analysis
 
-```
-./matlab_eval/EvaluationCode
-```
+>## Results
+* **Qualitative comparison**  
 
-里面有评估的代码,主要是评估S-measure,F-measure,E-measure,MAE这些指标
+![image](figs/vision_results.png)  
+Figure.2 Qualitative comparison of our proposed method with some SOTA methods.  
 
-显著性检测的结果放在test_maps,数据集放datasets，具体路径参考我的
+* **Quantitative comparison** 
 
-在main.m中修改路径和模型名称,文件名称之后，在命令行也可以执行，执行速度很慢，所以可以开多个控制台同时运行
+![image](figs/qulities_results.png)  
+Table.1 Quantitative comparison with some SOTA models on five public RGB-D benchmark datasets. 
 
-```
-#usage:
-matlab -nodesktop -nosplash -r "Models={'Model Name'};Datasets={'Test Dataset Name'}; main"
-```
+* **Salmaps**   
+The salmaps of the above datasets can be download from [here](https://pan.baidu.com/s/1sswZiW-2lDaYPPnpK9Ahbw) [code:NEPU] or [Google](https://drive.google.com/file/d/1cBSijVa52ut-htYnBWDegFiYlMUhZC8W/view?usp=drive_link).
 
-```
-./matlab_eval/
-├── best_model_count.png
-├── check_shape.py
-├── cmd.txt
-├── datasets
-├── EvaluationCode
-├── EvaluationCode.zip
-├── result
-├── result2csv.py
-├── subset_result
-├── table_adp.csv
-├── table_adp_em.csv
-├── table_adp_fm.csv
-├── table_adp_mae.csv
-├── table_adp_sm.csv
-├── table_max.csv
-├── table_mean.csv
-├── test_maps
-└── val_result.py
-```
 
-运行后的结果将保存于./matlab_eval/result中,执行以下命令让结果转化为csv表格
-
-```
-python result2csv.py
-```
-
->### 预训练backbone模型
-
-pretrained包含几种backbone的预训练模型文件与之对应的配置文件
-
-这里我已经配置好了，不需要去修改了
-
->### 模型和训练代码
+>## Train/Test
 
 networks里面是模型的代码
 
-train.py的使用方法
+>### Data Preparation
+
+We provide [download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-D dataset，[download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-T dataset
+
+We randomly selected images from multiple test datasets for validation.
+
+### Dataset Structure
 
 ```
-python train.py --backbone {} --texture {} --gpu_id {}
+dataset/
+├─RGBD_dataset/
+│ ├─train/
+│ │ ├─ReDWeb-S-TR/
+│ │ ├─NJUNLPR/
+│ │ ├─...
+│ └─test/
+│   ├─NJU2K/
+│   ├─STERE/
+│   ├─...
+└─RGBT_dataset/
+  ├─train/
+  │ └─RGBT_train/
+  └─test/
+    ├─VT821/
+    ├─VI-RGBT1500/
+    ├─...
+```
+The structure of each dataset is shown below
+```
+RGBT_train/
+├─bound/
+├─GT/
+├─T/
+├─RGB/
+├─namlab40/ #only for train, optional
+├─...
 ```
 
-test.py的使用方法
+>### pretrain
+
+./pretrained contains several backbone pre-trained checkpoint files with their corresponding configuration files
+
+train on multi-GPUs
 
 ```
-python test.py --backbone {} --test_model {} --gpu_id {}
+# CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 distributed.py \
+#     --backbone segswin-base segswin-small --texture /namlab40/ --lr 3e-4  --decay_epoch 10 --gamma 0.5 \
+#     --train_batch 32 --mfusion AFM  --warmup_epoch 40 --max_epoch 100 \
+#     --train_root /path/to/train/dataset --val_root /path/to/test/dataset
 ```
 
-其他参数的修改见
+test 
+```
+python test.py --test_model /path/to/log/ --gpu_id 0
+```
 
-```
-# model_config.py
-cd /home/data1/ShiqiangShu/WaveNet/networks/
-```
+
+
