@@ -2,6 +2,9 @@
 
 This is an official implementation for "NGSNet: An NAMLab Hierarchical Image Segmentation Guided Swin Transformer Based Network for RGB-D Salient Object Detection"
 
+![](./ngs_table.png)
+![](./pr_curve.png)
+
 ## Environmental Setups
 
 python>=3.7 pytorch>=1.13
