@@ -29,18 +29,19 @@ Fig.2 Qualitative comparison of our proposed method with some RGB-T SOTA methods
 * **Quantitative comparison** 
 
 ![](./main_cmp.png)
-![](./rgbt.png)
 
 Table.1 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
+
+![](./rgbt.png)
+
+Table.2 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
 
 
 * **Salmaps**   
 
-The salmaps of the above datasets can be download from [here]() [code:NEPU].
+The salmaps of the above datasets can be download from [here]().
 
 >## Train/Test
-
-networks里面是模型的代码
 
 >## Data Preparation
 
@@ -80,45 +81,22 @@ RGBT_train/
 ├─...
 ```
 
->### NAMLab边界提取
+>### NAMLab boundary guidance mechaism
 
->#### NAMLAB环境配置
+>#### config NAMLAB environment
 
-[参考教程](https://waltpeter.github.io/open-cv-basic/install-opencv-ubuntu-cpp/index.html)
+refer to [opencv-install](https://waltpeter.github.io/open-cv-basic/install-opencv-ubuntu-cpp/index.html)
 
-```
-
-```
+refer to [matlab-install](https://blog.csdn.net/mziing/article/details/122422397)
 
 >#### NAMLab boundary data preparation
 
-cppsrc文件夹包含了NAMLab的C++ 代码，详情见[NAMLab](https://github.com/YunpingZheng/NAMLab)
+refer to [NAMLab](https://github.com/YunpingZheng/NAMLab)
 
-
-run_dataset,run_demo都已经编译完成
-
-```
-cd /home/data1/ShiqiangShu/WaveNet/cppsrc/NAMLab/NAMLab/'Source Codes'/Linux
-```
-
-只需要在这个目录下执行
+>### convert NAMLab Hierarchical Image Segmentation map to NAMLab boundary map
 
 ```
-run_dataset {输入图片所在文件夹路径，最好用绝对路径} {结果所在的路径，最好也是绝对路径} 0 {分割块的数量}
-```
-
-在结果的文件夹下面找到分割块的.mat文件
-
->### NAMLab分块文件转化为边界图
-
-把.mat文件中每次分割出来的块边界做个提取,拿形态学膨胀的结果减去形态学腐蚀的结果
-
-[参考博客](https://blog.csdn.net/wangjia2575525474/article/details/117919453)
-
-
-```
-#TODO 参数
-python /home/data1/ShiqiangShu/WaveNet/dataset/convertmat.py --/path/to/data --/path/to/result
+python convertmat.py --/path/to/data --/path/to/result
 ```
 
 >### pretrain
