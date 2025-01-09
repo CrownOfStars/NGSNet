@@ -14,34 +14,9 @@ pip install -r requirements.txt
 
 >## Evaluation and Visual Analysis
 
->## Results
-* **Qualitative comparison**  
+refer to [SOD_Evaluation_Metrics](https://github.com/zyjwuyan/SOD_Evaluation_Metrics)
 
-![](./ngs_table.png)
-![](./pr_curve.png)
-
-Fig.1 Qualitative comparison of our proposed method with some RGB-D SOTA methods.  
-
-![](./rgbt_table.png)
-
-Fig.2 Qualitative comparison of our proposed method with some RGB-T SOTA methods.
-
-* **Quantitative comparison** 
-
-![](./main_cmp.png)
-
-Table.1 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
-
-![](./rgbt.png)
-
-Table.2 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
-
-
-* **Salmaps**   
-
-The salmaps of the above datasets can be download from [here]().
-
->## Train/Test
+>### Train/Test
 
 >## Data Preparation
 
@@ -80,6 +55,67 @@ RGBT_train/
 ├─namlab40/ #only for train, optional
 ├─...
 ```
+>### pretrain
+
+./pretrained contains several backbone pre-trained checkpoint files with their corresponding configuration files
+
+train on multi-GPUs
+
+```
+# CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 distributed.py \
+#     --backbone segswin-base segswin-small --texture /namlab40/ --lr 3e-4  --decay_epoch 10 --gamma 0.5 \
+#     --train_batch 32 --mfusion AFM  --warmup_epoch 40 --max_epoch 100 \
+#     --train_root /path/to/train/dataset --val_root /path/to/test/dataset
+```
+
+>### model and log
+
+log文件夹里面是模型运行的结果，这个文件夹不要动，别的文件丢了都无所谓，这里面的文件都是很重要的数据
+
+每次运行后会创建一个文件夹，里面包含如下几组数据
+
++ ckpt文件夹:包含了模型文件，一般取best那个pth模型文件
+
++ src文件夹:本次运行的源文件，这样修改了代码也不用担心之前的代码没存档了(我认为是不错的习惯，因为代码在初期是经常修改的，把代码和模型运行结果对应起来方便还原)
+
++ save文件夹:在测试集上生成的显著性检测的结果
+
++ log.txt文件:输出日志，除了输出外，本次运行的config信息可以从里面得知
+
+
+test 
+```
+python test.py --test_model /path/to/log/ --gpu_id 0
+```
+
+* **Salmaps**   
+
+The salmaps of the above datasets can be download from [here]().
+
+
+>## Results
+* **Qualitative comparison**  
+
+![](./ngs_table.png)
+![](./pr_curve.png)
+
+Fig.1 Qualitative comparison of our proposed method with some RGB-D SOTA methods.  
+
+![](./rgbt_table.png)
+
+Fig.2 Qualitative comparison of our proposed method with some RGB-T SOTA methods.
+
+* **Quantitative comparison** 
+
+![](./main_cmp.png)
+
+Table.1 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
+
+![](./rgbt.png)
+
+Table.2 Quantitative comparison with some SOTA models on some public RGB-D benchmark datasets. 
+
+
 
 >### NAMLab boundary guidance mechaism
 
@@ -99,37 +135,8 @@ refer to [NAMLab](https://github.com/YunpingZheng/NAMLab)
 python convertmat.py --/path/to/data --/path/to/result
 ```
 
->### pretrain
-
-./pretrained contains several backbone pre-trained checkpoint files with their corresponding configuration files
-
-train on multi-GPUs
-
-```
-# CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 distributed.py \
-#     --backbone segswin-base segswin-small --texture /namlab40/ --lr 3e-4  --decay_epoch 10 --gamma 0.5 \
-#     --train_batch 32 --mfusion AFM  --warmup_epoch 40 --max_epoch 100 \
-#     --train_root /path/to/train/dataset --val_root /path/to/test/dataset
-```
-
-test 
-```
-python test.py --test_model /path/to/log/ --gpu_id 0
-```
-
->### model and log
-
-log文件夹里面是模型运行的结果，这个文件夹不要动，别的文件丢了都无所谓，这里面的文件都是很重要的数据
-
-每次运行后会创建一个文件夹，里面包含如下几组数据
-
-+ ckpt文件夹:包含了模型文件，一般取best那个pth模型文件
-
-+ src文件夹:本次运行的源文件，这样修改了代码也不用担心之前的代码没存档了(我认为是不错的习惯，因为代码在初期是经常修改的，把代码和模型运行结果对应起来方便还原)
-
-+ save文件夹:在测试集上生成的显著性检测的结果
-
-+ log.txt文件:输出日志，除了输出外，本次运行的config信息可以从里面得知
-
-
+# Related works
+- TIP 23 - WaveNet: Wavelet Network With Knowledge Distillation for RGB-T Salient Object Detection [[Code](https://github.com/nowander/WaveNet)]
+- TCSVT 21 - SwinNet: Swin Transformer drives edge-aware RGB-D and RGB-T salient object detection [[Code][(https://github.com/liuzywen/SwinNet)]
+- F3Net - F3Net: Fusion, Feedback and Focus for Salient Object Detection [[Code](https://github.com/weijun-arc/F3Net)]
 
