@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 ### Data Preparation
 
-We provide [download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-D dataset，[download link](https://pan.baidu.com/s/1dZ47EX1ttETSE3jF8Km-5w&pwd=yial) for the RGB-T dataset.
+We provide [download link](https://pan.baidu.com/s/1BZG68__oPN_E-907Iclf8A&pwd=piue) for the RGB-D dataset，[download link](https://pan.baidu.com/s/1AAjH2IE5NMieGAQYcXRH-Q&pwd=fgtk) for the RGB-T dataset.
 
 We randomly selected images from multiple test datasets for validation.
 
@@ -84,7 +84,7 @@ python test.py --test_model /path/to/log/ --gpu_id 0
 
 * **Salmaps**   
 
-The salmaps of the above datasets can be download from [here]().
+The salmaps of the above datasets can be download from [here](https://pan.baidu.com/s/1P7Mk4TXHvSl6MZab0WtHnA&pwd=idrr).
 
 ## Evaluation and Visual Analysis
 
