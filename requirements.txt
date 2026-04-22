@@ -1,0 +1,13 @@
+einops
+pillow
+pandas
+imageio
+opencv-python
+scipy
+timm
+tqdm
+torchmetrics
+yacs
+pytorch_wavelets
+pywavelets
+matplotlib

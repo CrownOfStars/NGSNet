@@ -1,0 +1,12 @@
+
+python train_nam.py --backbone swin-base --texture /namlab30/ --gpu_id 6 --train_batch 36
+
+python train_nam.py --backbone swin-base --gpu_id 7 --train_batch 36
+
+python train.py --backbone pool-m48 --texture /namlab30/ --train_batch 36 --gpu_id 2
+
+python train.py --backbone swinmlp-base --texture /namlab30/ --train_batch 36 --gpu_id 1
+
+python train.py --backbone swinv2-base --texture /namlab30/ --train_batch 36 --gpu_id 3
+
+#usage: HF_ENDPOINT="https://hf-mirror.com" CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 gd_distributed.py --backbone segswin-base --texture /namlab40/ --lr 3e-4 --train_batch 48 --mfusion HAIM
