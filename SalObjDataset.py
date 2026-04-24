@@ -1,65 +1,13 @@
 import os
-from PIL import Image,ImageEnhance
+from PIL import Image
 import torch.utils.data as data
 import torchvision.transforms as transforms
-import random
-import numpy as np
 import cv2
 import torch.nn.functional as F
-import math
+from custom_transforms import random_flip, random_crop, random_rotation, color_enhance
 """
  TORCH_DISTRIBUTED_DEBUG=DETAIL CUDA_VISIBLE_DEVICES=1,2,3 python -m torch.distributed.launch --nproc_per_node=3 distributed.py --backbone segswin-base --texture /namlab40/ --mfusion HAIM --lr 3e-4 --train_batch 48
 """
-# several data augumentation strategies
-def random_flip(*images):
-
-    if random.randint(0, 1):
-        for image in images:
-            image = image.transpose(Image.FLIP_LEFT_RIGHT)
-
-    if random.randint(0,1):
-        for image in images:
-            image = image.transpose(Image.FLIP_LEFT_RIGHT)    
-
-    return images
-
-
-def random_crop(*images):
-    
-    image_width,image_height = images[0].size[0], images[0].size[1]
-    border_width,border_height = image_width*0.1,image_height*0.1
-    crop_win_width = np.random.randint(image_width - border_width, image_width)
-    crop_win_height = np.random.randint(image_height - border_height, image_height)
-    random_region = (
-        (image_width - crop_win_width) >> 1, (image_height - crop_win_height) >> 1, (image_width + crop_win_width) >> 1,
-        (image_height + crop_win_height) >> 1)
-    for image in images:
-        image = image.crop(random_region)
-
-    return images
-
-
-
-def random_rotation(*images):
-    mode = Image.BICUBIC
-    if random.random() > 0.8:
-        random_angle = np.random.randint(-15, 15)
-        for image in images:
-            image = image.rotate(random_angle, mode)
-
-    return images
-
-
-def color_enhance(image):
-    bright_intensity = random.randint(5, 15) / 10.0
-    image = ImageEnhance.Brightness(image).enhance(bright_intensity)
-    contrast_intensity = random.randint(5, 15) / 10.0
-    image = ImageEnhance.Contrast(image).enhance(contrast_intensity)
-    color_intensity = random.randint(0, 20) / 10.0
-    image = ImageEnhance.Color(image).enhance(color_intensity)
-    sharp_intensity = random.randint(0, 30) / 10.0
-    image = ImageEnhance.Sharpness(image).enhance(sharp_intensity)
-    return image
 
 def image_suffix(f):
     return f.endswith('.bmp') or f.endswith('.png') or f.endswith('.jpg')
@@ -438,7 +386,7 @@ def get_loader(dataset_root, batchsize, trainsize,dist = False, texture_type = N
         train_dataset = data.ConcatDataset([SalObjTrainDataset(dataset_root+'/'+dataset,texture_type,trainsize) for dataset in os.listdir(dataset_root)])
         data_loader = data.DataLoader(dataset=train_dataset,
                                       batch_size=batchsize,
-                                      
+                                      drop_last=True,
                                       num_workers=4,sampler= data.distributed.DistributedSampler(train_dataset) if dist else None)
         
         return data_loader

@@ -1,0 +1,6 @@
+MODEL:
+  TYPE: convnextv2-tiny
+  CONVNEXT:
+    EMBED_DIMS: [96, 192, 384, 768]
+    DEPTHS: [2, 2, 14, 2]
+    

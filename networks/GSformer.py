@@ -96,9 +96,13 @@ class ChannelCompression(nn.Module):
     def forward(self, x):
         return self.conv(x)
 
+
+
+
 class GSformer(nn.Module):
     def __init__(self,config):
         super(GSformer, self).__init__()
+
 
 
         self.encoderR, embed_dims = build_Rbackbone(config)
@@ -109,10 +113,22 @@ class GSformer(nn.Module):
 
         self.FFT1, self.FFT2, self.FFT3, self.FFT4 = build_modilty_fusion(config.MODEL.MFUSION,embed_dims,fused_dims)
 
-        self.S4 = nn.ConvTranspose2d(fused_dims[3], 1, 2, stride=2)
-        self.S3 = nn.ConvTranspose2d(fused_dims[2], 1, 2, stride=2)
-        self.S2 = nn.ConvTranspose2d(fused_dims[1], 1, 2, stride=2)
-        self.S1 = nn.ConvTranspose2d(fused_dims[0], 1, 2, stride=2)
+        self.S4 = nn.Sequential(
+            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
+            nn.Conv2d(fused_dims[3], 1, kernel_size=1, bias=False),
+        )
+        self.S3 = nn.Sequential(
+            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
+            nn.Conv2d(fused_dims[2], 1, kernel_size=1, bias=False),
+        )
+        self.S2 = nn.Sequential(
+            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
+            nn.Conv2d(fused_dims[1], 1, kernel_size=1, bias=False),
+        )
+        self.S1 = nn.Sequential(
+            nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
+            nn.Conv2d(fused_dims[0], 1, kernel_size=1, bias=False),
+        )
         
 
         self.up_loss = Interpolate(size=input_size//4)

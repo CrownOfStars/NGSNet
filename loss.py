@@ -252,7 +252,10 @@ def GTSupervision(s1,s2,s3,s4,gt):
         gt = F.interpolate(gt,scale_factor=0.5,recompute_scale_factor=True)
     return loss
 
-def EdgeSupervision(edge1,bounds):
+def EdgeSupervision(edge1,bounds,p):
+    #edge1 = F.avg_pool2d(edge1,kernel_size=3,stride=1,padding=1)
+    
+    bounds = F.avg_pool2d(bounds,kernel_size=2*p+1,stride=1,padding=p)
     return IOULoss(edge1,bounds)#
 
 

@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from networks.BConv2d import *
 import torch.nn.functional as F
-from timm.models.layers import DropPath
+from timm.layers import DropPath
 
 class CALayer(nn.Module):
     def __init__(self, channel, reduction=16):

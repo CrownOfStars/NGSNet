@@ -1,0 +1,6 @@
+MODEL:
+  TYPE: convnextv2-nano
+  CONVNEXT:
+    EMBED_DIMS: [80, 160, 320, 640]
+    DEPTHS: [3, 3, 11, 3]
+    

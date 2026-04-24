@@ -4,7 +4,7 @@ import sys
 sys.path.append('../')
 
 from networks.wavemlp import WaveMLP_S
-from timm.models.layers import DropPath
+from timm.layers import DropPath
 from pytorch_wavelets import DTCWTForward, DTCWTInverse
 from torch.nn.functional import kl_div
 

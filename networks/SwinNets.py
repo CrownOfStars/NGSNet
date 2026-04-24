@@ -10,7 +10,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import torch.utils.checkpoint as checkpoint
-from timm.models.layers import DropPath, to_2tuple, trunc_normal_
+from timm.layers import DropPath, to_2tuple, trunc_normal_
 from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 
 from networks.PoolNets import PoolFormer
@@ -51,7 +51,7 @@ def safe_load_model(model,state_dict,ckpt_path):
 def build_Rbackbone(config):
     model_type = config.RGBSTREAM.TYPE
 
-    pretrained = False#config.RGBSTREAM.PRETRAINED
+    pretrained = config.RGBSTREAM.PRETRAINED
 
     embed_dims = []
     if model_type == 'swin':
@@ -242,7 +242,7 @@ def build_RGB_backbone(config):
 def build_Xbackbone(config):
     model_type = config.XSTREAM.TYPE
     
-    pretrained = False#config.XSTREAM.PRETRAINED
+    pretrained = config.XSTREAM.PRETRAINED
     
     embed_dims = []
     if model_type == 'swin':

@@ -458,27 +458,27 @@ _C.FUSED_LAYERNORM = False
 
 
 cfg_dict = {
-    "wavemlp-s":["./pretrained/WaveMLP_S.pth.tar","./pretrained/configs/wavemlp/wavemlp_m_224.yaml"],
-    "wavemlp-m":["./pretrained/WaveMLP_M.pth.tar","./pretrained/configs/wavemlp/wavemlp_s_224.yaml"],
-    "resnet-50":["./pretrained/resnet50-19c8e357.pth","./pretrained/configs/resnet/resnet50.yaml"],
-    "resnet-101":["./pretrained/resnet101-5d3b4d8f.pth","./pretrained/configs/resnet/resnet101.yaml"],
-    "resnet-152":["./pretrained/resnet152-b121ed2d.pth","./pretrained/configs/resnet/resnet152.yaml"],
-    "swin-tiny":["./pretrained/swin_tiny_patch4_window7_224_22k.pth","./pretrained/configs/swin/swin_small_patch4_window7_224_22k.yaml"],
-    "swin-small":["./pretrained/swin_small_patch4_window7_224_22k.pth","./pretrained/configs/swin/swin_small_patch4_window7_224_22k.yaml"],
-    "swin-base":["./pretrained/swin_base_patch4_window7_224_22k.pth","./pretrained/configs/swin/swin_base_patch4_window7_224_22k.yaml"],#batch_size 24
-    "swin-large":["./pretrained/swin_large_patch4_window7_224_22k.pth","./pretrained/configs/swin/swin_large_patch4_window7_224_22k.yaml"],
-    "swin-base-384":["./pretrained/swin_base_patch4_window12_384_22k.pth","./pretrained/configs/swin/swin_base_patch4_window12_384_22kto1k_finetune.yaml"],
-    "swinv2-base":["./pretrained/swinv2_base_patch4_window12_192_22k.pth","./pretrained/configs/swinv2/swinv2_base_patch4_window12_192_22k.yaml"],
-    "swinmlp-base":["./pretrained/swin_mlp_base_patch4_window7_224.pth","./pretrained/configs/swinmlp/swin_mlp_base_patch4_window7_224.yaml"],
-    "pool-s24":["./pretrained/poolformer_s24.pth","./pretrained/configs/pool/pool_s24_patch4_224.yaml"],
-    "pool-s36":["./pretrained/poolformer_s36.pth","./pretrained/configs/pool/pool_s36_patch4_224.yaml"],
-    "pool-m36":["./pretrained/poolformer_m36.pth","./pretrained/configs/pool/pool_m36_patch4_224.yaml"],
-    "pool-m48":["./pretrained/poolformer_m48.pth","./pretrained/configs/pool/pool_m48_patch4_224.yaml"],
-    "mobilenetv2":["./pretrained/mobilenet_v2-b0353104.pth","./pretrained/configs/mobilenet/mobilenetv2.yaml"],
-    "convnext-base":["./pretrained/convnext_base_22k_224.pth","./pretrained/configs/convnext/convnext.yaml"],
-    "segswin-base":["./pretrained/swin_base_patch4_window12_384_22k.pth","./pretrained/configs/segswin/swin_base_patch4_window12_384_22kto1k_finetune.yaml"],
-    "segswin-small":["./pretrained/swin_small_patch4_window7_224_22k.pth","./pretrained/configs/segswin/swin_small_patch4_window7_224_22k.yaml"],
-    "segresnet-101":["./pretrained/resnet101.pth","./pretrained/configs/segresnet/segresnet-101.yaml"]
+    "wavemlp-s":["./pretrained/ckpts/WaveMLP_S.pth.tar","./pretrained/configs/wavemlp/wavemlp_m_224.yaml"],
+    "wavemlp-m":["./pretrained/ckpts/WaveMLP_M.pth.tar","./pretrained/configs/wavemlp/wavemlp_s_224.yaml"],
+    "resnet-50":["./pretrained/ckpts/resnet50-19c8e357.pth","./pretrained/configs/resnet/resnet50.yaml"],
+    "resnet-101":["./pretrained/ckpts/resnet101-5d3b4d8f.pth","./pretrained/configs/resnet/resnet101.yaml"],
+    "resnet-152":["./pretrained/ckpts/resnet152-b121ed2d.pth","./pretrained/configs/resnet/resnet152.yaml"],
+    "swin-tiny":["./pretrained/ckpts/swin_tiny_patch4_window7_224_22k.pth","./pretrained/configs/swin/swin_small_patch4_window7_224_22k.yaml"],
+    "swin-small":["./pretrained/ckpts/swin_small_patch4_window7_224_22k.pth","./pretrained/configs/swin/swin_small_patch4_window7_224_22k.yaml"],
+    "swin-base":["./pretrained/ckpts/swin_base_patch4_window7_224_22k.pth","./pretrained/configs/swin/swin_base_patch4_window7_224_22k.yaml"],#batch_size 24
+    "swin-large":["./pretrained/ckpts/swin_large_patch4_window7_224_22k.pth","./pretrained/configs/swin/swin_large_patch4_window7_224_22k.yaml"],
+    "swin-base-384":["./pretrained/ckpts/swin_base_patch4_window12_384_22k.pth","./pretrained/configs/swin/swin_base_patch4_window12_384_22kto1k_finetune.yaml"],
+    "swinv2-base":["./pretrained/ckpts/swinv2_base_patch4_window12_192_22k.pth","./pretrained/configs/swinv2/swinv2_base_patch4_window12_192_22k.yaml"],
+    "swinmlp-base":["./pretrained/ckpts/swin_mlp_base_patch4_window7_224.pth","./pretrained/configs/swinmlp/swin_mlp_base_patch4_window7_224.yaml"],
+    "pool-s24":["./pretrained/ckpts/poolformer_s24.pth","./pretrained/configs/pool/pool_s24_patch4_224.yaml"],
+    "pool-s36":["./pretrained/ckpts/poolformer_s36.pth","./pretrained/configs/pool/pool_s36_patch4_224.yaml"],
+    "pool-m36":["./pretrained/ckpts/poolformer_m36.pth","./pretrained/configs/pool/pool_m36_patch4_224.yaml"],
+    "pool-m48":["./pretrained/ckpts/poolformer_m48.pth","./pretrained/configs/pool/pool_m48_patch4_224.yaml"],
+    "mobilenetv2":["./pretrained/ckpts/mobilenet_v2-b0353104.pth","./pretrained/configs/mobilenet/mobilenetv2.yaml"],
+    "convnext-base":["./pretrained/ckpts/convnext_base_22k_224.pth","./pretrained/configs/convnext/convnext.yaml"],
+    "segswin-base":["./pretrained/ckpts/swin_base_patch4_window12_384_22k.pth","./pretrained/configs/segswin/swin_base_patch4_window12_384_22kto1k_finetune.yaml"],
+    "segswin-small":["./pretrained/ckpts/swin_small_patch4_window7_224_22k.pth","./pretrained/configs/segswin/swin_small_patch4_window7_224_22k.yaml"],
+    "segresnet-101":["./pretrained/ckpts/resnet101.pth","./pretrained/configs/segresnet/segresnet-101.yaml"]
 }
 
 """
@@ -687,7 +687,7 @@ def parse_option(mode = "train"):
     parser.add_argument('--throughput', action='store_true', help='Test throughput only')
 
     # distributed training
-    parser.add_argument("--local_rank", type=int, default= -1, help='local rank for DistributedDataParallel')
+    parser.add_argument("--local_rank","--local-rank", type=int, default= -1, help='local rank for DistributedDataParallel')
 
     # for acceleration
     parser.add_argument('--fused_window_process', action='store_true',

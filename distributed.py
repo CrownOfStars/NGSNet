@@ -5,8 +5,7 @@ import torch.nn.parallel
 import torch.backends.cudnn as cudnn
 import torch.distributed as dist
 import torch.optim as optim
-import torch.utils.data
-import torch.utils.data.distributed
+import math
 import json
 from networks.models_config import parse_option
 
@@ -70,6 +69,7 @@ args.nprocs = torch.cuda.device_count()
 
 model = GSformer(config)
 model.cuda(args.local_rank)
+model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model)
 model = torch.nn.parallel.DistributedDataParallel(model,
                 device_ids=[args.local_rank],find_unused_parameters=True)
 
@@ -115,7 +115,7 @@ def train(train_loader, model, optimizer, epoch, local_rank, args):
     loss_all = 0
     epoch_step = 0
     
-    
+    dyn_p = max(0,3-int(math.log(epoch+1)))
     total_step = len(train_loader)
     
     loss_all = 0
@@ -134,8 +134,8 @@ def train(train_loader, model, optimizer, epoch, local_rank, args):
 
                 s1, s2, s3, s4, edge1, edge2, edge3 = model(images, depths)
 
-                loss = GTSupervision(s1,s2,s3,s4,gts) + EdgeSupervision(edge1,bounds)\
-                    + NAMLABSupervision(edge2,texs) + EdgeSupervision(edge3, bounds)
+                loss = GTSupervision(s1,s2,s3,s4,gts) + EdgeSupervision(edge1,bounds,dyn_p)\
+                    + NAMLABSupervision(edge2,texs) + EdgeSupervision(edge3, bounds,dyn_p)
 
 
             torch.distributed.barrier() 
